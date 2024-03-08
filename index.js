@@ -59,6 +59,10 @@ const setupMaster = (httpServer, opts) => {
             }
           }
         }
+        leastActiveWorker.clientsCount = (leastActiveWorker.clientsCount || 0) + 1;
+        setTimeout(() => {
+          leastActiveWorker.clientsCount--;
+        }, 1000)
         return leastActiveWorker.id;
     }
   };
